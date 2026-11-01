@@ -56,8 +56,8 @@ page count, processing time, OCR flags, encoding flags, and optional PDF metadat
 | `profile` | `:fidelity` | `:compact` enables token-saving Markdown rewrites |
 | `page_breaks` | `false` | Insert Markdown page markers |
 
-`:detect` only classifies the document. `:analyze` computes extraction/layout
-metadata without rendering Markdown. Both return `markdown: nil`.
+`:detect` only classifies the document. `:analyze` analyzes the document
+without rendering Markdown. Both return `markdown: nil`.
 Classification and page count describe the original document even with
 `pages: [...]`; selecting pages deliberately limits extracted content.
 
@@ -93,6 +93,8 @@ PDF_INSPECTOR_BUILD=true mix docs --warnings-as-errors
 `PDF_INSPECTOR_BUILD=true` forces source compilation. It is intended for
 development and unsupported targets, and requires the optional Rustler dependency.
 Normal installation downloads only the current platform's release artifact.
+Consumers forcing a source build must add `{:rustler, "~> 0.38", runtime: false}`
+to their own dependencies, since Rustler is optional for downstream users.
 
 ## Releases
 

@@ -14,7 +14,7 @@ defmodule PdfInspector do
   ## Options
 
     * `:mode` - `:full` (default) extracts Markdown, `:detect` classifies without
-      extraction, and `:analyze` extracts layout metadata without rendering Markdown.
+      extraction, and `:analyze` extracts document metadata without rendering Markdown.
     * `:pages` - a non-empty list of positive, 1-indexed page numbers. Defaults to
       all pages. Document classification and `page_count` describe the original PDF;
       pages limits extraction. Selecting pages may intentionally omit document content.
