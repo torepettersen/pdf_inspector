@@ -1,0 +1,12 @@
+[package]
+name = "pdf_inspector_nif"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+pdf-inspector = "1.25.2"
+rustler = "0.39"

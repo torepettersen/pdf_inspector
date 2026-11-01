@@ -1,0 +1,64 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+env:
+  PDF_INSPECTOR_BUILD: "true"
+jobs:
+  test:
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        include:
+          - elixir: "1.15"
+            otp: "26"
+          - elixir: "1.20"
+            otp: "27"
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: erlef/setup-beam@v1.24.1
+        with:
+          elixir-version: ${{ matrix.elixir }}
+          otp-version: ${{ matrix.otp }}
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt
+      - uses: Swatinem/rust-cache@v2.9.3
+        with:
+          workspaces: native/pdf_inspector_nif -> target
+      - run: mix deps.get
+        env:
+          MIX_ENV: test
+      - run: mix format --check-formatted
+      - run: cargo fmt --manifest-path native/pdf_inspector_nif/Cargo.toml -- --check
+      - run: mix test --warnings-as-errors
+  docs:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: erlef/setup-beam@v1.24.1
+        with:
+          elixir-version: "1.20"
+          otp-version: "27"
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2.9.3
+        with:
+          workspaces: native/pdf_inspector_nif -> target
+      - run: mix deps.get
+      - run: mix docs --warnings-as-errors
+      - uses: actions/upload-pages-artifact@v5.0.0
+        with:
+          path: doc
+      - uses: actions/deploy-pages@v5.0.1
+        id: deployment
+        if: github.event_name == 'push'

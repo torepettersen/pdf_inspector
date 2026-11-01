@@ -1,0 +1,57 @@
+name: Build precompiled NIFs
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    name: ${{ matrix.target }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - target: x86_64-unknown-linux-gnu
+            os: ubuntu-22.04
+          - target: x86_64-unknown-linux-musl
+            os: ubuntu-22.04
+            cross: true
+          - target: aarch64-unknown-linux-gnu
+            os: ubuntu-22.04
+            cross: true
+          - target: aarch64-unknown-linux-musl
+            os: ubuntu-22.04
+            cross: true
+          - target: aarch64-apple-darwin
+            os: macos-15
+          - target: x86_64-apple-darwin
+            os: macos-15-intel
+          - target: x86_64-pc-windows-msvc
+            os: windows-2022
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - name: Read package version
+        shell: bash
+        run: echo "PROJECT_VERSION=$(sed -n 's/^  @version "\(.*\)"/\1/p' mix.exs)" >> "$GITHUB_ENV"
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.target }}
+      - uses: Swatinem/rust-cache@v2.9.3
+        with:
+          workspaces: native/pdf_inspector_nif -> target
+      - uses: philss/rustler-precompiled-action@v1.1.5
+        id: build
+        with:
+          project-name: pdf_inspector_nif
+          project-version: ${{ env.PROJECT_VERSION }}
+          project-dir: native/pdf_inspector_nif
+          target: ${{ matrix.target }}
+          nif-version: "2.15"
+          use-cross: ${{ matrix.cross || false }}
+          cross-version: v0.2.5
+          cargo-args: --locked
+      - uses: actions/upload-artifact@v7.0.2
+        with:
+          name: nif-${{ matrix.target }}
+          path: ${{ steps.build.outputs.file-path }}
+          if-no-files-found: error
