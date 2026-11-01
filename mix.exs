@@ -48,6 +48,7 @@ defmodule PdfInspector.MixProject do
       files: [
         "lib",
         "native/pdf_inspector_nif/src",
+        "native/pdf_inspector_nif/.cargo",
         "native/pdf_inspector_nif/Cargo.toml",
         "native/pdf_inspector_nif/Cargo.lock",
         "checksum-*.exs",

@@ -47,7 +47,7 @@ jobs:
           project-dir: native/pdf_inspector_nif
           target: ${{ matrix.target }}
           nif-version: "2.15"
-          use-cross: ${{ matrix.cross || false }}
+          use-cross: ${{ matrix.cross }}
           cross-version: v0.2.5
           cargo-args: --locked
       - uses: actions/upload-artifact@v7.0.2
