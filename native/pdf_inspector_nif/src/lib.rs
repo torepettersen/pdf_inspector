@@ -1,6 +1,6 @@
 use pdf_inspector::{
-    process_pdf_mem_with_options, DetectionConfig, MarkdownOptions, MarkdownProfile, PdfOptions,
-    PdfType, ProcessMode, ScanStrategy,
+    process_pdf_mem_with_options, MarkdownOptions, MarkdownProfile, PdfOptions, PdfType,
+    ProcessMode,
 };
 use rustler::{Atom, Binary, NifMap, NifStruct, NifUnitEnum};
 
@@ -61,17 +61,11 @@ fn process(bytes: Binary, options: Options) -> Result<Extraction, String> {
         Profile::Fidelity => MarkdownProfile::Fidelity,
         Profile::Compact => MarkdownProfile::Compact,
     };
-    let mut pdf_options = PdfOptions::new()
-        .mode(mode)
-        .detection(DetectionConfig {
-            strategy: ScanStrategy::Full,
-            ..DetectionConfig::default()
-        })
-        .markdown(MarkdownOptions {
-            profile,
-            include_page_numbers: options.page_breaks,
-            ..MarkdownOptions::default()
-        });
+    let mut pdf_options = PdfOptions::new().mode(mode).markdown(MarkdownOptions {
+        profile,
+        include_page_numbers: options.page_breaks,
+        ..MarkdownOptions::default()
+    });
 
     if let Some(pages) = options.pages {
         pdf_options = pdf_options.pages(pages);

@@ -23,10 +23,11 @@ defmodule PdfInspector do
       enables token-saving Markdown rewrites.
     * `:page_breaks` - inserts Markdown page markers when `true`. Defaults to `false`.
 
-  Every page is checked for OCR needs. Scanned pages are reported in
-  PdfInspector.Result.pages_needing_ocr; this library does not perform OCR.
+  Classification uses upstream defaults, sampling up to eight pages. Scanned pages
+  are reported in PdfInspector.Result.pages_needing_ocr; this library does not perform OCR.
   Do not treat partial Markdown as a complete document without checking that field
-  and `has_encoding_issues`. In detection mode, encoding issues have not been checked.
+  and `has_encoding_issues`. Sampling may miss isolated scanned pages in long documents.
+  In detection mode, encoding issues have not been checked.
 
   Unknown options or invalid option values raise `ArgumentError`.
   """

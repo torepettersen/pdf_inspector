@@ -60,6 +60,24 @@ defmodule PdfInspectorTest do
     end
   end
 
+  test "classification uses upstream's default page sampling in long documents" do
+    # Page 8 is scanned but falls outside upstream's default sample.
+    path = Path.join(__DIR__, "fixtures/sampled.pdf")
+    bytes = File.read!(path)
+
+    for opts <- [[], [mode: :full], [mode: :detect], [mode: :analyze]] do
+      assert {:ok, result} = PdfInspector.process_file(path, opts)
+      assert result.page_count == 10
+      assert result.pdf_type == :text_based
+      assert result.confidence == 1.0
+
+      assert {:ok, from_binary} = PdfInspector.process_binary(bytes, opts)
+
+      assert Map.delete(from_binary, :processing_time_ms) ==
+               Map.delete(result, :processing_time_ms)
+    end
+  end
+
   test "page selection limits extraction while preserving the document page count" do
     assert {:ok, all} = PdfInspector.process_file(@pages)
     assert all.markdown =~ "FIRST PAGE"

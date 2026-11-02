@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+* Preserve upstream's default detection strategy instead of forcing a full-page scan.
+
 ## 0.1.0
 
 * Local PDF classification and Markdown extraction using Firecrawl pdf-inspector 1.25.2.

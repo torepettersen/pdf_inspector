@@ -73,7 +73,8 @@ raise the same exception.
 
 OCR is not enabled. Check `pages_needing_ocr` and `has_encoding_issues` before
 treating Markdown as a complete document. In `:detect` mode, encoding quality
-has not been checked. Every document page is inspected for OCR requirements.
+has not been checked. Classification uses upstream's default detection strategy,
+sampling up to eight pages. Sampling may miss isolated scanned pages in long documents.
 
 Processing stays in memory with no disk cache, network API or model download.
 File processing reads the file into memory first. Native parsing runs on a dirty

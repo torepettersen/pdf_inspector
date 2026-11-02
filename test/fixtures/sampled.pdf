@@ -1,0 +1,82 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R 4 0 R 5 0 R 6 0 R 7 0 R 8 0 R 9 0 R 10 0 R 11 0 R 12 0 R] /Count 10 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 200 200] /Resources << /Font << /F1 15 0 R >> >> /Contents 13 0 R >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 200 200] /Resources << /Font << /F1 15 0 R >> >> /Contents 13 0 R >>
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 200 200] /Resources << /Font << /F1 15 0 R >> >> /Contents 13 0 R >>
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 200 200] /Resources << /Font << /F1 15 0 R >> >> /Contents 13 0 R >>
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 200 200] /Resources << /Font << /F1 15 0 R >> >> /Contents 13 0 R >>
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 200 200] /Resources << /Font << /F1 15 0 R >> >> /Contents 13 0 R >>
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 200 200] /Resources << /Font << /F1 15 0 R >> >> /Contents 13 0 R >>
+endobj
+10 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 200 200] /Resources << /XObject << /Scan 16 0 R >> >> /Contents 14 0 R >>
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 200 200] /Resources << /Font << /F1 15 0 R >> >> /Contents 13 0 R >>
+endobj
+12 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 200 200] /Resources << /Font << /F1 15 0 R >> >> /Contents 13 0 R >>
+endobj
+13 0 obj
+<< /Length 110 >>
+stream
+BT /F1 12 Tf 20 180 Td (Supplier Example AS) Tj 0 -20 Td (Invoice 1042) Tj 0 -20 Td (Total NOK 12500.00) Tj ET
+endstream
+endobj
+14 0 obj
+<< /Length 33 >>
+stream
+q 100 0 0 100 20 20 cm /Scan Do Q
+endstream
+endobj
+15 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+16 0 obj
+<< /Type /XObject /Subtype /Image /Width 2 /Height 2 /ColorSpace /DeviceGray /BitsPerComponent 8 /Length 4 >>
+stream
+ABCD
+endstream
+endobj
+xref
+0 17
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000173 00000 n 
+0000000301 00000 n 
+0000000429 00000 n 
+0000000557 00000 n 
+0000000685 00000 n 
+0000000813 00000 n 
+0000000941 00000 n 
+0000001069 00000 n 
+0000001203 00000 n 
+0000001332 00000 n 
+0000001461 00000 n 
+0000001623 00000 n 
+0000001707 00000 n 
+0000001778 00000 n 
+trailer
+<< /Size 17 /Root 1 0 R >>
+startxref
+1926
+%%EOF
