@@ -1,8 +1,9 @@
 # Changelog
 
-## Unreleased
+## 0.1.1
 
 * Preserve upstream's default detection strategy instead of forcing a full-page scan.
+* Add `scan_strategy: :full` for callers that need OCR detection on every page.
 
 ## 0.1.0
 

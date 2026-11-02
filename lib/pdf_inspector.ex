@@ -22,8 +22,10 @@ defmodule PdfInspector do
     * `:profile` - `:fidelity` (default) preserves source characters, or `:compact`
       enables token-saving Markdown rewrites.
     * `:page_breaks` - inserts Markdown page markers when `true`. Defaults to `false`.
+    * `:scan_strategy` - `:default` preserves upstream detection defaults; `:full`
+      checks every page for OCR needs, including pages outside the default sample.
 
-  Classification uses upstream defaults, sampling up to eight pages. Scanned pages
+  By default, classification samples up to eight pages. Scanned pages
   are reported in PdfInspector.Result.pages_needing_ocr; this library does not perform OCR.
   Do not treat partial Markdown as a complete document without checking that field
   and `has_encoding_issues`. Sampling may miss isolated scanned pages in long documents.
@@ -42,6 +44,7 @@ defmodule PdfInspector do
           | {:password, binary() | nil}
           | {:profile, :fidelity | :compact}
           | {:page_breaks, boolean()}
+          | {:scan_strategy, :default | :full}
 
   @doc """
   Processes a PDF file, reading it into memory.
@@ -112,7 +115,8 @@ defmodule PdfInspector do
         pages: nil,
         password: nil,
         profile: :fidelity,
-        page_breaks: false
+        page_breaks: false,
+        scan_strategy: :default
       )
       |> Map.new()
 
@@ -137,6 +141,10 @@ defmodule PdfInspector do
 
     unless is_boolean(options.page_breaks) do
       raise ArgumentError, ":page_breaks must be a boolean"
+    end
+
+    unless options.scan_strategy in [:default, :full] do
+      raise ArgumentError, ":scan_strategy must be :default or :full"
     end
 
     options

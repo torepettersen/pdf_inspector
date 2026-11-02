@@ -89,6 +89,28 @@ defmodule PdfInspectorTest do
     refute selected.markdown =~ "FIRST PAGE"
   end
 
+  test "full scanning reports an isolated scanned page outside the default sample" do
+    path = Path.join(__DIR__, "fixtures/long_mixed.pdf")
+    bytes = File.read!(path)
+
+    for mode <- [:full, :detect, :analyze] do
+      assert {:ok, sampled} = PdfInspector.process_binary(bytes, mode: mode)
+      assert sampled.pdf_type == :text_based
+      assert sampled.pages_needing_ocr == []
+
+      opts = [mode: mode, scan_strategy: :full]
+      assert {:ok, full} = PdfInspector.process_binary(bytes, opts)
+      assert full.pdf_type == :mixed
+      assert full.pages_needing_ocr == [8]
+      assert full.page_count == 10
+
+      assert {:ok, from_file} = PdfInspector.process_file(path, opts)
+
+      assert Map.delete(from_file, :processing_time_ms) ==
+               Map.delete(full, :processing_time_ms)
+    end
+  end
+
   test "Markdown formatting options use a trailing keyword list" do
     assert {:ok, result} = PdfInspector.process_file(@pages, profile: :compact, page_breaks: true)
     assert result.markdown =~ "<!-- Page"
@@ -119,7 +141,8 @@ defmodule PdfInspectorTest do
           [pages: "1"],
           [password: 123],
           [profile: :invalid],
-          [page_breaks: "yes"]
+          [page_breaks: "yes"],
+          [scan_strategy: :invalid]
         ] do
       assert_raise ArgumentError, fn -> PdfInspector.process_binary(bytes, opts) end
     end

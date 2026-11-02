@@ -17,7 +17,7 @@ Until the first Hex publication, use the GitHub release:
 ```elixir
 {:pdf_inspector,
  github: "torepettersen/pdf_inspector",
- tag: "v0.1.0"}
+ tag: "v0.1.1"}
 ```
 
 Precompiled NIFs are provided for x86-64 and ARM64 Linux (glibc and musl),
@@ -55,6 +55,7 @@ page count, processing time, OCR flags, encoding flags, and optional PDF metadat
 | `password` | `nil` | PDF decryption password |
 | `profile` | `:fidelity` | `:compact` enables token-saving Markdown rewrites |
 | `page_breaks` | `false` | Insert Markdown page markers |
+| `scan_strategy` | `:default` | Preserve upstream detection defaults, or `:full` to check every page |
 
 `:detect` only classifies the document. `:analyze` analyzes the document
 without rendering Markdown. Both return `markdown: nil`.
@@ -75,6 +76,8 @@ OCR is not enabled. Check `pages_needing_ocr` and `has_encoding_issues` before
 treating Markdown as a complete document. In `:detect` mode, encoding quality
 has not been checked. Classification uses upstream's default detection strategy,
 sampling up to eight pages. Sampling may miss isolated scanned pages in long documents.
+Use `scan_strategy: :full` when every page must be checked before accepting the text,
+such as invoice extraction. This option controls detection, independently of `mode`.
 
 Processing stays in memory with no disk cache, network API or model download.
 File processing reads the file into memory first. Native parsing runs on a dirty
