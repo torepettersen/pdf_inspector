@@ -1,16 +1,16 @@
 %{
-  "libpdf_inspector_nif-v0.1.0-nif-2.15-aarch64-apple-darwin.so.tar.gz" =>
-    "sha256:027935f73141fb5203ec125c11ee286cae925d753220e4535766e80fa6302cd9",
-  "libpdf_inspector_nif-v0.1.0-nif-2.15-aarch64-unknown-linux-gnu.so.tar.gz" =>
-    "sha256:43ea1e1d18c903927f822bdffaccbff63011b14439d00d32dd9fbac99e992772",
-  "libpdf_inspector_nif-v0.1.0-nif-2.15-aarch64-unknown-linux-musl.so.tar.gz" =>
-    "sha256:a59c62e3ea64baac509402196acf78cd86d11c12ab836d4027e797d957c14fe2",
-  "libpdf_inspector_nif-v0.1.0-nif-2.15-x86_64-apple-darwin.so.tar.gz" =>
-    "sha256:5532a8d1536e5602decbdafd9064ae9d1497d02abf7622ed809c9f3e06d7ab3e",
-  "libpdf_inspector_nif-v0.1.0-nif-2.15-x86_64-unknown-linux-gnu.so.tar.gz" =>
-    "sha256:c87d63cd77a99b0af73f2483be173db30a0665ee9ccdb065ab3726c73a8558c0",
-  "libpdf_inspector_nif-v0.1.0-nif-2.15-x86_64-unknown-linux-musl.so.tar.gz" =>
-    "sha256:5733260ce916cf7dceeb08e11207194083ca50cc86974f1715630fcbfff12c94",
-  "pdf_inspector_nif-v0.1.0-nif-2.15-x86_64-pc-windows-msvc.dll.tar.gz" =>
-    "sha256:639ebcebeb4201b8e3a4f17db76aaed57f097418388d9acdbb1004d259a9fa48"
+  "libpdf_inspector_nif-v0.1.1-nif-2.15-aarch64-apple-darwin.so.tar.gz" =>
+    "sha256:3c539dea7c45ac48fed06963090807de79e87c043f558d56af4c708373aeafe2",
+  "libpdf_inspector_nif-v0.1.1-nif-2.15-aarch64-unknown-linux-gnu.so.tar.gz" =>
+    "sha256:043122952b6fa1035d7cb5036d9b98cc6903a23ba7609836489d0dcfb2b386f1",
+  "libpdf_inspector_nif-v0.1.1-nif-2.15-aarch64-unknown-linux-musl.so.tar.gz" =>
+    "sha256:4042ed0aebcae06157bfd093550592bb48998f65054d2f59ae3b79045d6cbdaf",
+  "libpdf_inspector_nif-v0.1.1-nif-2.15-x86_64-apple-darwin.so.tar.gz" =>
+    "sha256:d4a8ef2cf4e0021ed56ae69f7619858a59af66963eba9b399017f61ecd4dc71c",
+  "libpdf_inspector_nif-v0.1.1-nif-2.15-x86_64-unknown-linux-gnu.so.tar.gz" =>
+    "sha256:a9308c06dba474b0243fd08ae66f00bdd083b1bc2348d62b858701aa7062bdd4",
+  "libpdf_inspector_nif-v0.1.1-nif-2.15-x86_64-unknown-linux-musl.so.tar.gz" =>
+    "sha256:1dbebd77cb3fc1fa42f35ab95c1724fd18dd356435af3ab0e25f8a622fe535ab",
+  "pdf_inspector_nif-v0.1.1-nif-2.15-x86_64-pc-windows-msvc.dll.tar.gz" =>
+    "sha256:249385688a34ba0dfde2a02673707928c9cd838959e55c033b68ed246563ee37"
 }
